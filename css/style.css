@@ -304,3 +304,130 @@ footer {
         color: #083d52;
         margin-bottom: 10px;
     }
+/* CONTACT SECTION */
+.contact-section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: #0b5d7a;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.contact-text {
+    color: #333333;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* CONTACT FORM */
+.contact-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    flex: 100%;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #083d52;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #cfd8df;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0b5d7a;
+    box-shadow: 0 0 0 3px rgba(11, 93, 122, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* BUTTONS */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.form-buttons button {
+    background-color: #0b5d7a;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-buttons button:hover {
+    background-color: #083d52;
+    transform: translateY(-2px);
+}
+
+.form-buttons .reset-btn {
+    background-color: #6c7a86;
+}
+
+.form-buttons .reset-btn:hover {
+    background-color: #57636d;
+}
+
+/* CONTACT RESPONSIVE */
+@media (max-width: 576px) {
+    .contact-section h2 {
+        font-size: 28px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-buttons button {
+        width: 100%;
+    }
+}
