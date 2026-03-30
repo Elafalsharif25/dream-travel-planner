@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Trip - Dream Travel Planner</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Dream Travel Planner</h1>
+        <p>Plan Your Dream Trip</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="trip-request.html">Plan Trip</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="form-section">
+            <h2>Trip Request Form</h2>
+            <p>
+                Fill out the form below and let us help you plan your perfect trip
+                based on your destination, budget, and preferences.
+            </p>
+
+            <form action="#" method="post" class="trip-form">
+                
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required maxlength="50" placeholder="Enter your full name">
+
+                <select id="country" name="country" required>
+    <option value="">Select a country</option>
+    <option value="France">France</option>
+    <option value="UAE">UAE</option>
+    <option value="Saudi Arabia">Saudi Arabia</option>
+    <option value="Turkey">Turkey</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Italy">Italy</option>
+</select>
+                <label for="budget">Budget (SAR)</label>
+                <input type="number" id="budget" name="budget" required min="1000" max="50000" placeholder="Enter your budget">
+
+                <label for="days">Number of Days</label>
+                <input type="number" id="days" name="days" required min="1" max="30" placeholder="Enter number of days">
+
+                <label for="traveltype">Travel Type</label>
+                <select id="traveltype" name="traveltype" required>
+                    <option value="">Select travel type</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Family">Family</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="Budget">Budget</option>
+                    <option value="Romantic">Romantic</option>
+                </select>
+
+                <label for="hotel">Accommodation Type</label>
+                <select id="hotel" name="hotel" required>
+                    <option value="">Select accommodation</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Resort">Resort</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Hostel">Hostel</option>
+                </select>
+
+                <label for="travelers">Number of Travelers</label>
+                <input type="number" id="travelers" name="travelers" required min="1" max="10" placeholder="Enter number of travelers">
+
+                <label for="date">Travel Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="notes">Special Requests</label>
+                <textarea id="notes" name="notes" rows="5" maxlength="300" placeholder="Write any extra details..."></textarea>
+
+                <button type="submit">Submit Trip Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
