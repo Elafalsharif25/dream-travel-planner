@@ -8,52 +8,57 @@
 </head>
 <body>
 
-    <header>
-        <h1>Dream Travel Planner</h1>
+    <header class="site-header">
+        <div class="header-top">
+            <a href="../index.html" class="brand">
+                <img src="../images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
+                <h1>Dream Travel Planner</h1>
+            </a>
+        </div>
         <p>Plan Your Dream Trip</p>
     </header>
 
-   <nav class="navigation">
-    <ul>
-        <li class="list">
-            <a href="../index.html">
-                <span class="icon">
-                    <ion-icon name="home-outline"></ion-icon>
-                </span>
-                <span class="text">Home</span>
-            </a>
-        </li>
+    <nav class="navigation">
+        <ul>
+            <li class="list">
+                <a href="../index.html">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
 
-        <li class="list">
-            <a href="about-us.html">
-                <span class="icon">
-                    <ion-icon name="people-outline"></ion-icon>
-                </span>
-                <span class="text">About</span>
-            </a>
-        </li>
+            <li class="list">
+                <a href="about-us.html">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="text">About</span>
+                </a>
+            </li>
 
-        <li class="list">
-            <a href="contact-us.html">
-                <span class="icon">
-                    <ion-icon name="call-outline"></ion-icon>
-                </span>
-                <span class="text">Contact</span>
-            </a>
-        </li>
+            <li class="list">
+                <a href="contact-us.html">
+                    <span class="icon">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </span>
+                    <span class="text">Contact</span>
+                </a>
+            </li>
 
-        <li class="list active">
-            <a href="trip-request.html">
-                <span class="icon">
-                    <ion-icon name="airplane-outline"></ion-icon>
-                </span>
-                <span class="text">Plan Trip</span>
-            </a>
-        </li>
+            <li class="list active">
+                <a href="trip-request.html">
+                    <span class="icon">
+                        <ion-icon name="airplane-outline"></ion-icon>
+                    </span>
+                    <span class="text">Plan Trip</span>
+                </a>
+            </li>
 
-        <div class="indicator"></div>
-    </ul>
-</nav>
+            <div class="indicator"></div>
+        </ul>
+    </nav>
 
     <main>
         <section class="form-section">
@@ -64,7 +69,6 @@
             </p>
 
             <form action="trip-results.html" method="get" class="trip-form">
-
                 <label for="fullname">Full Name</label>
                 <input type="text" id="fullname" name="fullname" required maxlength="50"
                     pattern="^[A-Za-z\s]+$"
@@ -117,8 +121,9 @@
     <footer>
         <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
