@@ -32,9 +32,14 @@
 
             <form action="#" method="post" class="trip-form">
                 
-                <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" required maxlength="50" placeholder="Enter your full name">
+         <label for="fullname">Full Name</label>
+<input type="text" id="fullname" name="fullname" required maxlength="50"
+pattern="^[A-Za-z\s]+$"
+title="Full name should contain letters only"
+placeholder="Enter your full name"
+oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
 
+<label for="country">Destination Country</label>
                 <select id="country" name="country" required>
     <option value="">Select a country</option>
     <option value="France">France</option>
@@ -45,10 +50,14 @@
     <option value="Italy">Italy</option>
 </select>
                 <label for="budget">Budget (SAR)</label>
-                <input type="number" id="budget" name="budget" required min="1000" max="50000" placeholder="Enter your budget">
+                <input type="number" id="budget" name="budget" required min="1000" max="50000"
+placeholder="Enter your budget"
+onkeydown="return false">
 
                 <label for="days">Number of Days</label>
-                <input type="number" id="days" name="days" required min="1" max="30" placeholder="Enter number of days">
+                <input type="number" id="days" name="days" required min="1" max="30"
+placeholder="Enter number of days"
+onkeydown="return false">
 
                 <label for="traveltype">Travel Type</label>
                 <select id="traveltype" name="traveltype" required>
@@ -56,7 +65,7 @@
                     <option value="Adventure">Adventure</option>
                     <option value="Family">Family</option>
                     <option value="Luxury">Luxury</option>
-                    <option value="Budget">Budget</option>
+                    <option value="Culture">Culture</option>
                     <option value="Romantic">Romantic</option>
                 </select>
 
@@ -70,7 +79,9 @@
                 </select>
 
                 <label for="travelers">Number of Travelers</label>
-                <input type="number" id="travelers" name="travelers" required min="1" max="10" placeholder="Enter number of travelers">
+<input type="number" id="travelers" name="travelers" required min="1" max="15"
+placeholder="Enter number of travelers"
+oninput="if(this.value < 1) this.value = 1">
 
                 <label for="date">Travel Date</label>
                 <input type="date" id="date" name="date" required>
