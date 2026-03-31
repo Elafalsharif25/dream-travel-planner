@@ -18,14 +18,47 @@
     </header>
 
     <!-- NAVIGATION -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="html/about-us.html">About Us</a></li>
-            <li><a href="html/contact-us.html">Contact Us</a></li>
-            <li><a href="html/trip-request.html">Plan Trip</a></li>
-        </ul>
-    </nav>
+<nav class="navigation">
+    <ul>
+        <li class="list active">
+            <a href="index.html">
+                <span class="icon">
+                    <ion-icon name="home-outline"></ion-icon>
+                </span>
+                <span class="text">Home</span>
+            </a>
+        </li>
+
+        <li class="list">
+            <a href="html/about-us.html">
+                <span class="icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </span>
+                <span class="text">About</span>
+            </a>
+        </li>
+
+        <li class="list">
+            <a href="html/contact-us.html">
+                <span class="icon">
+                    <ion-icon name="call-outline"></ion-icon>
+                </span>
+                <span class="text">Contact</span>
+            </a>
+        </li>
+
+        <li class="list">
+            <a href="html/trip-request.html">
+                <span class="icon">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </span>
+                <span class="text">Plan Trip</span>
+            </a>
+        </li>
+
+        <div class="indicator"></div>
+    </ul>
+</nav>
 
     <!-- MAIN CONTENT -->
     <main>
@@ -108,6 +141,8 @@
     <footer>
         <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
