@@ -614,15 +614,15 @@ footer {
 }
 
 .navigation ul li:nth-child(2).active ~ .indicator {
-    transform: translateX(100px);
+    transform: translateX(120px);
 }
 
 .navigation ul li:nth-child(3).active ~ .indicator {
-    transform: translateX(200px);
+    transform: translateX(240px);
 }
 
 .navigation ul li:nth-child(4).active ~ .indicator {
-    transform: translateX(300px);
+    transform: translateX(360px);
 }
 
 .navigation ul li a:hover .icon {
