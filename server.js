@@ -5,12 +5,10 @@ const mysql = require("mysql2");
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
-// Database connection
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -29,24 +27,32 @@ db.connect(err => {
 
 // Contact form
 app.post("/submit-contact", (req, res) => {
-  const fullname = req.body["first-name"] + " " + req.body["last-name"];
+  const fullname = `${req.body["first-name"] || ""} ${req.body["last-name"] || ""}`.trim();
   const email = req.body.email;
   const message = req.body.message;
 
   const sql = "INSERT INTO contact_messages (fullname, email, message) VALUES (?, ?, ?)";
 
-  db.query(sql, [fullname, email, message], (err, result) => {
+  db.query(sql, [fullname, email, message], err => {
     if (err) {
       console.error(err);
-      res.send("Error saving contact form");
+      res.status(500).send("Error saving contact form");
     } else {
-      res.send("Contact form submitted successfully!");
+      res.status(200).send("Contact form saved successfully");
     }
   });
 });
+
 // Trip request
 app.post("/submit-trip", (req, res) => {
-  const { fullname, budget, travelers, days, date, traveltype, hotel, notes } = req.body;
+  const fullname = req.body.fullname;
+  const budget = req.body.budget;
+  const travelers = req.body.travelers;
+  const days = req.body.days;
+  const date = req.body.date;
+  const traveltype = req.body.traveltype;
+  const hotel = req.body.hotel;
+  const notes = req.body.notes;
 
   const sql = `
     INSERT INTO trip_requests 
@@ -54,17 +60,24 @@ app.post("/submit-trip", (req, res) => {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
-  db.query(sql, [fullname, budget, travelers, days, date, traveltype, hotel, notes], (err, result) => {
+  db.query(sql, [fullname, budget, travelers, days, date, traveltype, hotel, notes], err => {
     if (err) {
       console.error(err);
-      res.send("Error saving trip request");
+      res.status(500).send("Error saving trip request");
     } else {
-      res.send("Trip request submitted successfully!");
+      const query = new URLSearchParams({
+        budget: budget || "",
+        travelers: travelers || "",
+        days: days || "",
+        traveltype: traveltype || "",
+        hotel: hotel || ""
+      });
+
+      res.redirect(`/html/trip-results.html?${query.toString()}`);
     }
   });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -68,22 +68,16 @@
                 We would be happy to hear from you.
             </p>
 
-            <form class="contact-form" action="/submit-contact" method="POST">
+            <form class="contact-form" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name"
-                            pattern="^[A-Za-z\s]+$"
-                            title="First name should contain letters only"
-                            required
-                            oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name"
-                            pattern="^[A-Za-z\s]+$"
-                            title="Last name should contain letters only"
-                            required
-                            oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g,'')">
                     </div>
                 </div>
 
@@ -156,5 +150,52 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../js/contact-validation.js"></script>
 
+
+    <div id="successModal" class="success-modal">
+  <div class="success-box">
+    <div class="success-icon">✓</div>
+    <h2>Message Sent Successfully</h2>
+    <p>Thank you for contacting Dream Travel Planner. We will get back to you soon.</p>
+    <button id="closeSuccessModal">OK</button>
+  </div>
+</div>
+
+    <script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const data = {
+    "first-name": formData.get("first-name"),
+    "last-name": formData.get("last-name"),
+    email: formData.get("email"),
+    message: formData.get("message")
+  };
+
+  try {
+    const response = await fetch("/submit-contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      document.getElementById("successModal").style.display = "flex";
+      this.reset();
+    } else {
+      alert("Error sending message. Please try again.");
+    }
+  } catch (error) {
+    alert("Server error. Please make sure the server is running.");
+  }
+});
+
+document.getElementById("closeSuccessModal").addEventListener("click", function() {
+  document.getElementById("successModal").style.display = "none";
+});
+</script>
 </body>
 </html>
