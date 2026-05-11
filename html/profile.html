@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Dream Travel Planner</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Your travel profile</p>
+    </header>
+
+    <nav class="navigation">
+      <ul>
+        <li class="list">
+          <a href="../index.html"
+            ><span class="icon"><ion-icon name="home-outline"></ion-icon></span
+            ><span class="text">Home</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="about-us.html"
+            ><span class="icon"
+              ><ion-icon name="people-outline"></ion-icon></span
+            ><span class="text">About</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="contact-us.html"
+            ><span class="icon"><ion-icon name="call-outline"></ion-icon></span
+            ><span class="text">Contact</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="trip-request.html"
+            ><span class="icon"
+              ><ion-icon name="airplane-outline"></ion-icon></span
+            ><span class="text">Plan Trip</span></a
+          >
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="profile-section">
+        <div class="avatar-wrapper">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile Picture"
+            class="profile-avatar"
+            id="profileAvatar"
+          />
+
+          <label for="avatarUpload" class="avatar-upload-btn">+</label>
+
+          <input type="file" id="avatarUpload" accept="image/*" hidden />
+        </div>
+        <h2>My Profile</h2>
+
+        <div class="travel-stats">
+          <div class="stat-card">
+            <h3>💰 Total Budget</h3>
+            <p id="totalBudget">0 SAR</p>
+          </div>
+          <div class="stat-card">
+            <h3>✈ Trips Planned</h3>
+            <p id="totalTrips">0</p>
+          </div>
+        </div>
+        <div id="profileInfo" class="profile-card">
+          <button id="darkModeToggle" class="dark-mode-btn">
+            🌙 Dark Mode
+          </button>
+          <p>Loading profile...</p>
+        </div>
+
+        <div class="profile-actions">
+          <a href="trip-request.html" class="plan-btn">Plan New Trip</a>
+
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+      </section>
+
+      <section class="profile-section">
+        <h2>My Plans</h2>
+        <button id="editPlansBtn" class="edit-btn">Edit Plans</button>
+        <div id="selectedPlanCard"></div>
+        <div id="userTrips" class="results-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/account.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"
+    ></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
+</html>

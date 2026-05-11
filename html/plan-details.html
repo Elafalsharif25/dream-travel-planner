@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan Details - Dream Travel Planner</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Your Personalized Travel Plan</p>
+    </header>
+
+    <main>
+      <section class="results-section">
+        <div class="details-navigation">
+          <a href="profile.html" class="nav-detail-btn">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+
+            Back
+          </a>
+
+          <a href="../index.html" class="nav-detail-btn">
+            <ion-icon name="home-outline"></ion-icon>
+
+            Home
+          </a>
+        </div>
+      </section>
+      <div id="planDetails"></div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      const index = params.get("index");
+
+      const savedPlans =
+        JSON.parse(localStorage.getItem("selectedPlans")) || [];
+
+      const plan = savedPlans[index];
+
+      const container = document.getElementById("planDetails");
+
+      if (!plan) {
+        container.innerHTML = "<h2>Plan not found.</h2>";
+      } else {
+        const itinerary = [];
+
+        const activities = [...plan.activities];
+
+        for (let i = 0; i < plan.userDays; i++) {
+          const activity = activities[i % activities.length];
+
+          const dayTemplates = [
+            `Start your day exploring ${activity} and enjoying the atmosphere of ${plan.country}.`,
+
+            `Spend the day experiencing ${activity} with memorable moments and beautiful views.`,
+
+            `Enjoy a relaxing and exciting experience at ${activity} during your stay in ${plan.country}.`,
+
+            `Discover local culture, food, and entertainment while visiting ${activity}.`,
+
+            `Take amazing photos and create unforgettable memories at ${activity}.`,
+
+            `Enjoy a unique ${plan.userTravelType} adventure while exploring ${activity}.`,
+          ];
+
+          const randomText = dayTemplates[i % dayTemplates.length];
+
+          itinerary.push(`
+  <div class="itinerary-day">
+
+    <h3>Day ${i + 1}</h3>
+
+    <p>${randomText}</p>
+
+  </div>
+`);
+        }
+
+        container.innerHTML = `
+          <article class="details-card">
+
+            <img
+              src="../images/${plan.image}"
+              alt="${plan.country}"
+              class="details-img"
+            >
+
+            <h2>${plan.country}</h2>
+
+            <p>${plan.description}</p>
+
+            <div class="details-grid">
+
+              <div class="detail-box">
+                <h3>Budget</h3>
+                <p>${plan.userBudget} SAR</p>
+              </div>
+
+              <div class="detail-box">
+                <h3>Duration</h3>
+                <p>${plan.userDays} Days</p>
+              </div>
+
+              <div class="detail-box">
+                <h3>Travel Type</h3>
+                <p>${plan.userTravelType}</p>
+              </div>
+
+              <div class="detail-box">
+                <h3>Hotel</h3>
+                <p>${plan.userHotel}</p>
+              </div>
+
+            </div>
+
+            <h2 class="itinerary-title">
+              Day-by-Day Itinerary
+            </h2>
+
+            <div class="itinerary-container">
+
+              ${itinerary.join("")}
+
+            </div>
+
+          </article>
+        `;
+      }
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
+</html>
