@@ -1,141 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dream Travel Planner</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
     <header class="site-header">
-        <div class="header-top">
-            <a href="index.html" class="brand">
-                <img src="images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
-                <h1>Dream Travel Planner</h1>
-            </a>
-        </div>
-        <p>Plan your perfect trip with ease</p>
+      <div class="header-top">
+        <a href="index.html" class="brand">
+          <img
+            src="images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="html/profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Plan your perfect trip with ease</p>
     </header>
 
     <nav class="navigation">
-        <ul>
-            <li class="list active">
-                <a href="index.html">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
+      <ul>
+        <li class="list active">
+          <a href="index.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="html/about-us.html">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="text">About</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="html/about-us.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="text">About</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="html/contact-us.html">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <span class="text">Contact</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="html/contact-us.html">
+            <span class="icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+            <span class="text">Contact</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="html/trip-request.html">
-                    <span class="icon">
-                        <ion-icon name="airplane-outline"></ion-icon>
-                    </span>
-                    <span class="text">Plan Trip</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="html/trip-request.html">
+            <span class="icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </span>
+            <span class="text">Plan Trip</span>
+          </a>
+        </li>
 
-            <div class="indicator"></div>
-        </ul>
+        <div class="indicator"></div>
+      </ul>
     </nav>
 
     <main>
-        <section>
-            <h2>Your Dream Trip Starts Here</h2>
-            <p>
-                Dream Travel Planner helps you organize and request personalized trips
-                based on your destination, budget, and preferences.
-            </p>
-            <a href="html/trip-request.html" class="plan-btn">Plan Your Trip</a>
-        </section>
+      <section>
+        <h2>Your Dream Trip Starts Here</h2>
+        <p>
+          Dream Travel Planner helps you organize and request personalized trips
+          based on your destination, budget, and preferences.
+        </p>
+        <a href="html/trip-request.html" class="plan-btn">Plan Your Trip</a>
+      </section>
 
-        <section>
-            <h2>Our Services</h2>
+      <section>
+        <h2>Our Services</h2>
 
-            <article>
-                <h3>Custom Trip Planning</h3>
-                <p>We create travel plans based on your interests and budget.</p>
-            </article>
+        <article>
+          <h3>Custom Trip Planning</h3>
+          <p>We create travel plans based on your interests and budget.</p>
+        </article>
 
-            <article>
-                <h3>Hotel Recommendations</h3>
-                <p>We help you find the best places to stay.</p>
-            </article>
+        <article>
+          <h3>Hotel Recommendations</h3>
+          <p>We help you find the best places to stay.</p>
+        </article>
 
-            <article>
-                <h3>Transportation Options</h3>
-                <p>We suggest the best travel methods for your journey.</p>
-            </article>
+        <article>
+          <h3>Transportation Options</h3>
+          <p>We suggest the best travel methods for your journey.</p>
+        </article>
 
-            <article>
-                <h3>Budget Planning</h3>
-                <p>We help you organize affordable and comfortable trips.</p>
-            </article>
-        </section>
+        <article>
+          <h3>Budget Planning</h3>
+          <p>We help you organize affordable and comfortable trips.</p>
+        </article>
+      </section>
 
-        <section>
-            <h2>Popular Destinations</h2>
+      <section>
+        <h2>Popular Destinations</h2>
 
-            <article>
-                <h3>Paris</h3>
-                <p>The city of lights and romance.</p>
-            </article>
+        <article>
+          <h3>Paris</h3>
+          <p>The city of lights and romance.</p>
+        </article>
 
-            <article>
-                <h3>Dubai</h3>
-                <p>Luxury, shopping, and modern attractions.</p>
-            </article>
+        <article>
+          <h3>Dubai</h3>
+          <p>Luxury, shopping, and modern attractions.</p>
+        </article>
 
-            <article>
-                <h3>Istanbul</h3>
-                <p>A beautiful mix of culture and history.</p>
-            </article>
+        <article>
+          <h3>Istanbul</h3>
+          <p>A beautiful mix of culture and history.</p>
+        </article>
 
-            <article>
-                <h3>Kuala Lumpur</h3>
-                <p>A vibrant city with amazing food and culture.</p>
-            </article>
-        </section>
+        <article>
+          <h3>Kuala Lumpur</h3>
+          <p>A vibrant city with amazing food and culture.</p>
+        </article>
+      </section>
 
-        <section>
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Easy and simple planning process</li>
-                <li>Personalized trip requests</li>
-                <li>User-friendly experience</li>
-                <li>Suitable for all budgets</li>
-                <li>Saves time and effort</li>
-            </ul>
-        </section>
+      <section>
+        <h2>Why Choose Us?</h2>
+        <ul>
+          <li>Easy and simple planning process</li>
+          <li>Personalized trip requests</li>
+          <li>User-friendly experience</li>
+          <li>Suitable for all budgets</li>
+          <li>Saves time and effort</li>
+        </ul>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/profile-icon.js"></script>
+  </body>
 </html>
