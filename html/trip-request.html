@@ -1,129 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plan Trip - Dream Travel Planner</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
     <header class="site-header">
-        <div class="header-top">
-            <a href="../index.html" class="brand">
-                <img src="../images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
-                <h1>Dream Travel Planner</h1>
-            </a>
-        </div>
-        <p>Plan Your Dream Trip</p>
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Plan Your Dream Trip</p>
     </header>
 
     <nav class="navigation">
-        <ul>
-            <li class="list">
-                <a href="../index.html">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
+      <ul>
+        <li class="list">
+          <a href="../index.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="about-us.html">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="text">About</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="about-us.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="text">About</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="contact-us.html">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <span class="text">Contact</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="contact-us.html">
+            <span class="icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+            <span class="text">Contact</span>
+          </a>
+        </li>
 
-            <li class="list active">
-                <a href="trip-request.html">
-                    <span class="icon">
-                        <ion-icon name="airplane-outline"></ion-icon>
-                    </span>
-                    <span class="text">Plan Trip</span>
-                </a>
-            </li>
+        <li class="list active">
+          <a href="trip-request.html">
+            <span class="icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </span>
+            <span class="text">Plan Trip</span>
+          </a>
+        </li>
 
-            <div class="indicator"></div>
-        </ul>
+        <div class="indicator"></div>
+      </ul>
     </nav>
 
     <main>
-        <section class="form-section">
-            <h2>Trip Request Form</h2>
-            <p>
-                Fill out the form below and let us recommend suitable destinations
-                based on your budget, travel type, and trip details.
-            </p>
+      <section class="form-section">
+        <h2>Trip Request Form</h2>
+        <p>
+          Fill out the form below and let us recommend suitable destinations
+          based on your budget, travel type, and trip details.
+        </p>
 
-            <form action="/submit-trip" method="POST" class="trip-form">
-                <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" required maxlength="50"
-                    pattern="^[A-Za-z\s]+$"
-                    title="Full name should contain letters only"
-                    placeholder="Enter your full name"
-                    oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+        <form
+          action="/submit-trip"
+          method="POST"
+          class="contact-form trip-form"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
 
-                <label for="budget">Budget (SAR)</label>
-                <input type="number" id="budget" name="budget" required min="1000" max="50000"
-                    placeholder="Enter your budget">
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                required
+                maxlength="50"
+                pattern="^[A-Za-z\s]+$"
+                title="Full name should contain letters only"
+                placeholder="Enter your full name"
+                oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
+              />
+            </div>
 
-                <label for="travelers">Number of Travelers</label>
-                <input type="number" id="travelers" name="travelers" required min="1" max="15"
-                    placeholder="Enter number of travelers">
+            <div class="form-group">
+              <label for="budget">Budget (SAR)</label>
 
-                <label for="days">Number of Days</label>
-                <input type="number" id="days" name="days" required min="1" max="30"
-                    placeholder="Enter number of days">
+              <input
+                type="number"
+                id="budget"
+                name="budget"
+                required
+                min="1000"
+                max="50000"
+                placeholder="Enter your budget"
+              />
+            </div>
+          </div>
 
-                <label for="date">Travel Date</label>
-                <input type="date" id="date" name="date" required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="travelers">Number of Travelers</label>
 
-                <label for="traveltype">Travel Type</label>
-                <select id="traveltype" name="traveltype" required>
-                    <option value="">Select travel type</option>
-                    <option value="Adventure">Adventure</option>
-                    <option value="Family">Family</option>
-                    <option value="Luxury">Luxury</option>
-                    <option value="Culture">Culture</option>
-                    <option value="Romantic">Romantic</option>
-                </select>
+              <input
+                type="number"
+                id="travelers"
+                name="travelers"
+                required
+                min="1"
+                max="15"
+                placeholder="Enter number of travelers"
+              />
+            </div>
 
-                <label for="hotel">Accommodation Type</label>
-                <select id="hotel" name="hotel" required>
-                    <option value="">Select accommodation</option>
-                    <option value="Hotel">Hotel</option>
-                    <option value="Resort">Resort</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Hostel">Hostel</option>
-                </select>
+            <div class="form-group">
+              <label for="days">Number of Days</label>
 
-                <label for="notes">Special Requests</label>
-                <textarea id="notes" name="notes" rows="5" maxlength="300" placeholder="Write any extra details..."></textarea>
+              <input
+                type="number"
+                id="days"
+                name="days"
+                required
+                min="1"
+                max="30"
+                placeholder="Enter number of days"
+              />
+            </div>
+          </div>
 
-                <button type="submit">Get Recommendations</button>
-            </form>
-        </section>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Travel Date</label>
+
+              <input type="date" id="date" name="date" required />
+            </div>
+
+            <div class="form-group">
+              <label for="traveltype">Travel Type</label>
+
+              <select id="traveltype" name="traveltype" required>
+                <option value="">Select travel type</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Family">Family</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Culture">Culture</option>
+                <option value="Romantic">Romantic</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hotel">Accommodation Type</label>
+
+              <select id="hotel" name="hotel" required>
+                <option value="">Select accommodation</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Resort">Resort</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Hostel">Hostel</option>
+              </select>
+            </div>
+          </div>
+
+          <input type="hidden" id="user_id" name="user_id" />
+
+          <div class="form-buttons">
+            <button type="submit">Get Recommendations</button>
+          </div>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="../js/trip-validation.js"></script>
-</body>
+    <script>
+      const savedUserId = localStorage.getItem("userId");
+
+      if (savedUserId) {
+        document.getElementById("user_id").value = savedUserId;
+      }
+    </script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
 </html>
