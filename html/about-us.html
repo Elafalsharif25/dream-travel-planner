@@ -1,145 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - Dream Travel Planner</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
     <header class="site-header">
-        <div class="header-top">
-            <a href="../index.html" class="brand">
-                <img src="../images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
-                <h1>Dream Travel Planner</h1>
-            </a>
-        </div>
-        <p>Meet Our Team</p>
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Meet Our Team</p>
     </header>
 
     <nav class="navigation">
-        <ul>
-            <li class="list">
-                <a href="../index.html">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
+      <ul>
+        <li class="list">
+          <a href="../index.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
 
-            <li class="list active">
-                <a href="about-us.html">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="text">About</span>
-                </a>
-            </li>
+        <li class="list active">
+          <a href="about-us.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="text">About</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="contact-us.html">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <span class="text">Contact</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="contact-us.html">
+            <span class="icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+            <span class="text">Contact</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="trip-request.html">
-                    <span class="icon">
-                        <ion-icon name="airplane-outline"></ion-icon>
-                    </span>
-                    <span class="text">Plan Trip</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="trip-request.html">
+            <span class="icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </span>
+            <span class="text">Plan Trip</span>
+          </a>
+        </li>
 
-            <div class="indicator"></div>
-        </ul>
+        <div class="indicator"></div>
+      </ul>
     </nav>
 
     <main>
-        <section>
-            <h2>About Our Team</h2>
-            <p>
-                We are a group of students working together to develop the Dream Travel Planner website.
-                Our goal is to help users easily plan their trips by providing simple and personalized travel planning services.
-            </p>
-        </section>
+      <section>
+        <h2>About Our Team</h2>
+        <p>
+          We are a group of students working together to develop the Dream
+          Travel Planner website. Our goal is to help users easily plan their
+          trips by providing simple and personalized travel planning services.
+        </p>
+      </section>
 
-        <section class="team-section">
-            <h2>Team Members</h2>
-            <p class="team-text">
-                Meet the team behind Dream Travel Planner. We worked together to create a simple
-                and helpful website that helps users plan their dream trips.
-            </p>
+      <section class="team-section">
+        <h2>Team Members</h2>
+        <p class="team-text">
+          Meet the team behind Dream Travel Planner. We worked together to
+          create a simple and helpful website that helps users plan their dream
+          trips.
+        </p>
 
-            <div class="table-container">
-                <table class="team-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Student ID</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Elaf Alsharif</td>
-                            <td>2310115</td>
-                            <td>2310115@uj.edu.sa</td>
-                        </tr>
-                        <tr>
-                            <td>Toleen Wael</td>
-                            <td>2311776</td>
-                            <td>2311776@uj.edu.sa</td>
-                        </tr>
-                        <tr>
-                            <td>Ghala Alharbi</td>
-                            <td>2310582</td>
-                            <td>2310582@uj.edu.sa</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <div class="table-container">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Elaf Alsharif</td>
+                <td>2310115</td>
+                <td>2310115@uj.edu.sa</td>
+              </tr>
+              <tr>
+                <td>Toleen Wael</td>
+                <td>2311776</td>
+                <td>2311776@uj.edu.sa</td>
+              </tr>
+              <tr>
+                <td>Ghala Alharbi</td>
+                <td>2310582</td>
+                <td>2310582@uj.edu.sa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        <section class="goal-section">
-            <h2>Our Goal</h2>
+      <section class="goal-section">
+        <h2>Our Goal</h2>
 
-            <p class="goal-text">
-                Our goal is to provide users with a simple and reliable platform to plan their dream trips.
-                We aim to help travelers organize their journeys based on their budget, destination,
-                and preferences while saving time and effort.
-            </p>
+        <p class="goal-text">
+          Our goal is to provide users with a simple and reliable platform to
+          plan their dream trips. We aim to help travelers organize their
+          journeys based on their budget, destination, and preferences while
+          saving time and effort.
+        </p>
 
-            <div class="goal-boxes">
-                <div class="goal-card">
-                    <h3>Easy Planning</h3>
-                    <p>We make travel planning simple and fast for everyone.</p>
-                </div>
+        <div class="goal-boxes">
+          <div class="goal-card">
+            <h3>Easy Planning</h3>
+            <p>We make travel planning simple and fast for everyone.</p>
+          </div>
 
-                <div class="goal-card">
-                    <h3>Affordable Trips</h3>
-                    <p>We help users find travel options that match their budget.</p>
-                </div>
+          <div class="goal-card">
+            <h3>Affordable Trips</h3>
+            <p>We help users find travel options that match their budget.</p>
+          </div>
 
-                <div class="goal-card">
-                    <h3>User Satisfaction</h3>
-                    <p>We focus on providing a smooth and friendly user experience.</p>
-                </div>
-            </div>
-        </section>
+          <div class="goal-card">
+            <h3>User Satisfaction</h3>
+            <p>We focus on providing a smooth and friendly user experience.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
 </html>
