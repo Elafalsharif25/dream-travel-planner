@@ -1,187 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trip Results - Dream Travel Planner</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Results - Dream Travel Planner</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Your Recommended Travel Plans</p>
+    </header>
 
-<header class="site-header">
-  <div class="header-top">
-    <a href="../index.html" class="brand">
-      <img src="../images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
-      <h1>Dream Travel Planner</h1>
-    </a>
-  </div>
-  <p>Your Recommended Travel Plans</p>
-</header>
+    <nav class="navigation">
+      <ul>
+        <li class="list">
+          <a href="../index.html"
+            ><span class="icon"><ion-icon name="home-outline"></ion-icon></span
+            ><span class="text">Home</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="about-us.html"
+            ><span class="icon"
+              ><ion-icon name="people-outline"></ion-icon></span
+            ><span class="text">About</span></a
+          >
+        </li>
+        <li class="list">
+          <a href="contact-us.html"
+            ><span class="icon"><ion-icon name="call-outline"></ion-icon></span
+            ><span class="text">Contact</span></a
+          >
+        </li>
+        <li class="list active">
+          <a href="trip-request.html"
+            ><span class="icon"
+              ><ion-icon name="airplane-outline"></ion-icon></span
+            ><span class="text">Plan Trip</span></a
+          >
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </nav>
 
-<nav class="navigation">
-  <ul>
-    <li class="list"><a href="../index.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="text">Home</span></a></li>
-    <li class="list"><a href="about-us.html"><span class="icon"><ion-icon name="people-outline"></ion-icon></span><span class="text">About</span></a></li>
-    <li class="list"><a href="contact-us.html"><span class="icon"><ion-icon name="call-outline"></ion-icon></span><span class="text">Contact</span></a></li>
-    <li class="list active"><a href="trip-request.html"><span class="icon"><ion-icon name="airplane-outline"></ion-icon></span><span class="text">Plan Trip</span></a></li>
-    <div class="indicator"></div>
-  </ul>
-</nav>
+    <main>
+      <section class="results-section">
+        <h2>Recommended Destinations</h2>
+        <p class="results-text" id="summaryText"></p>
 
-<main>
-  <section class="results-section">
-    <h2>Recommended Destinations</h2>
-    <p class="results-text" id="summaryText"></p>
+        <div class="results-grid" id="recommendations"></div>
+      </section>
+    </main>
 
-    <div class="results-grid" id="recommendations"></div>
-  </section>
-</main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
 
-<script>
-const params = new URLSearchParams(window.location.search);
+      const budget = Number(params.get("budget"));
+      const days = Number(params.get("days"));
+      const traveltype = (params.get("traveltype") || "").toLowerCase();
+      const hotel = params.get("hotel") || "Hotel";
 
-const budget = Number(params.get("budget"));
-const days = Number(params.get("days"));
-const traveltype = (params.get("traveltype") || "").toLowerCase();
-const hotel = params.get("hotel") || "Hotel";
+      document.getElementById("summaryText").innerText =
+        `Based on your input: ${budget} budget, ${days} days, ${traveltype || "general"} trip, and ${hotel} stay.`;
 
-document.getElementById("summaryText").innerText =
-  `Based on your input: ${budget} budget, ${days} days, ${traveltype || "general"} trip, and ${hotel} stay.`;
+      const destinations = [
+        {
+          country: "Dubai",
+          image: "dubai.jpg",
+          types: ["luxury", "family", "shopping", "adventure"],
+          budgetLevel: "medium",
+          minBudget: 3000,
+          minDays: 3,
+          stay: ["Hotel", "Resort", "Apartment"],
+          activities: ["Burj Khalifa", "Desert Safari", "Dubai Mall"],
+          description:
+            "A modern destination with luxury, shopping, family attractions, and exciting activities.",
+        },
+        {
+          country: "Turkey",
+          image: "turkey.jpg",
+          types: ["culture", "romantic", "family", "adventure"],
+          budgetLevel: "medium",
+          minBudget: 4000,
+          minDays: 5,
+          stay: ["Hotel", "Apartment"],
+          activities: ["Istanbul Old City", "Bosphorus Cruise", "Cappadocia"],
+          description:
+            "A beautiful mix of culture, history, shopping, and natural views.",
+        },
+        {
+          country: "Malaysia",
+          image: "malaysia.jpg",
+          types: ["family", "adventure", "relaxing", "culture"],
+          budgetLevel: "low",
+          minBudget: 2500,
+          minDays: 4,
+          stay: ["Hotel", "Resort", "Apartment"],
+          activities: ["Petronas Towers", "Langkawi Beaches", "Theme Parks"],
+          description:
+            "A budget-friendly destination with nature, shopping, food, and family activities.",
+        },
+        {
+          country: "Italy",
+          image: "italy.jpg",
+          types: ["luxury", "romantic", "culture"],
+          budgetLevel: "high",
+          minBudget: 10000,
+          minDays: 6,
+          stay: ["Hotel", "Resort"],
+          activities: ["Rome Colosseum", "Venice Gondola", "Milan Shopping"],
+          description:
+            "A premium destination full of history, romance, fashion, and elegant experiences.",
+        },
+        {
+          country: "Georgia",
+          image: "georgia.jpg",
+          types: ["nature", "budget", "culture", "adventure"],
+          budgetLevel: "low",
+          minBudget: 2000,
+          minDays: 3,
+          stay: ["Hotel", "Apartment", "Hostel"],
+          activities: ["Tbilisi Old Town", "Kazbegi Mountains", "Sulfur Baths"],
+          description:
+            "An affordable destination with mountains, culture, and relaxing nature.",
+        },
+        {
+          country: "Japan",
+          image: "japan.jpg",
+          types: ["culture", "adventure", "luxury", "family"],
+          budgetLevel: "high",
+          minBudget: 12000,
+          minDays: 7,
+          stay: ["Hotel"],
+          activities: ["Tokyo City Tour", "Mount Fuji", "Kyoto Temples"],
+          description:
+            "A unique destination with technology, culture, food, and unforgettable experiences.",
+        },
+        {
+          country: "Thailand",
+          image: "thailand.jpg",
+          types: ["adventure", "relaxing", "family", "budget"],
+          budgetLevel: "medium",
+          minBudget: 5000,
+          minDays: 5,
+          stay: ["Hotel", "Resort", "Hostel"],
+          activities: ["Phuket Beaches", "Bangkok Markets", "Island Tours"],
+          description:
+            "A vibrant destination with beaches, markets, islands, and affordable activities.",
+        },
+        {
+          country: "Switzerland",
+          image: "switzerland.jpg",
+          types: ["luxury", "romantic", "nature"],
+          budgetLevel: "high",
+          minBudget: 15000,
+          minDays: 6,
+          stay: ["Hotel", "Resort"],
+          activities: ["Swiss Alps", "Lake Geneva", "Scenic Train Rides"],
+          description:
+            "A luxury nature destination with mountains, lakes, and peaceful views.",
+        },
+      ];
 
-let plans = [];
+      let plans = destinations.filter((destination) => {
+        const matchesBudget = budget >= destination.minBudget;
+        const matchesDays = days >= destination.minDays;
+        const matchesType = destination.types.includes(traveltype);
+        const matchesStay = destination.stay.includes(hotel);
 
-if (budget <= 3000 && days <= 4) {
-  plans = [
-    {
-      country: "Dubai",
-      image: "dubai.jpg",
-      type: traveltype || "Short / Relaxing",
-      duration: `${days} Days`,
-      budget: `Fits your budget of ${budget}`,
-      description: `A short and affordable trip that matches your ${hotel} stay preference.`
-    },
-    {
-      country: "Georgia",
-      image: "georgia.jpg",
-      type: traveltype || "Nature / Budget",
-      duration: `${days} Days`,
-      budget: "Low budget friendly",
-      description: "A simple nearby destination with relaxing activities and low travel cost."
-    },
-    {
-      country: "Malaysia",
-      image: "malaysia.jpg",
-      type: traveltype || "Family / Relaxing",
-      duration: `${days} Days`,
-      budget: "Affordable option",
-      description: "A practical choice for a short trip with comfortable accommodation."
-    }
-  ];
-} else if (budget <= 5000) {
-  plans = [
-    {
-      country: "Malaysia",
-      image: "malaysia.jpg",
-      type: traveltype || "Family / Adventure",
-      duration: `${days} Days`,
-      budget: `Suitable for your budget of ${budget}`,
-      description: `A budget-friendly destination with activities that can match a ${traveltype || "general"} trip.`
-    },
-    {
-      country: "Georgia",
-      image: "georgia.jpg",
-      type: traveltype || "Culture / Nature",
-      duration: `${days} Days`,
-      budget: "Budget-friendly",
-      description: "A beautiful and affordable destination with nature, culture, and good value."
-    },
-    {
-      country: "Turkey",
-      image: "turkey.jpg",
-      type: traveltype || "Culture / Relaxing",
-      duration: `${days} Days`,
-      budget: "Suitable for low to medium budgets",
-      description: "A good option for travelers who want a comfortable trip without high cost."
-    }
-  ];
-} else if (budget <= 10000) {
-  plans = [
-    {
-      country: "Turkey",
-      image: "turkey.jpg",
-      type: traveltype || "Adventure / Culture",
-      duration: `${days} Days`,
-      budget: `Suitable for your budget of ${budget}`,
-      description: "A balanced destination with culture, shopping, views, and reasonable costs."
-    },
-    {
-      country: "Malaysia",
-      image: "malaysia.jpg",
-      type: traveltype || "Adventure / Relaxing",
-      duration: `${days} Days`,
-      budget: "Medium budget friendly",
-      description: "A flexible destination with beaches, activities, and many hotel options."
-    },
-    {
-      country: "Dubai",
-      image: "dubai.jpg",
-      type: traveltype || "Luxury / Shopping",
-      duration: `${days} Days`,
-      budget: "Medium to high budget",
-      description: "A modern destination suitable for short trips, shopping, and comfortable stays."
-    }
-  ];
-} else {
-  plans = [
-    {
-      country: "Italy",
-      image: "italy.jpg",
-      type: traveltype || "Luxury / Romantic",
-      duration: `${days} Days`,
-      budget: `Suitable for your budget of ${budget}`,
-      description: "A premium destination with history, elegance, romance, and luxury experiences."
-    },
-    {
-      country: "Dubai",
-      image: "dubai.jpg",
-      type: traveltype || "Luxury / Modern",
-      duration: `${days} Days`,
-      budget: "High budget option",
-      description: "A luxury destination with modern attractions, shopping, and premium hotels."
-    },
-    {
-      country: "Turkey",
-      image: "turkey.jpg",
-      type: traveltype || "Romantic / Culture",
-      duration: `${days} Days`,
-      budget: "High comfort option",
-      description: "A comfortable destination with culture, views, and memorable experiences."
-    }
-  ];
-}
+        return (
+          matchesBudget &&
+          matchesDays &&
+          (matchesType || traveltype === "general") &&
+          matchesStay
+        );
+      });
 
-const container = document.getElementById("recommendations");
+      if (plans.length === 0) {
+        plans = destinations
+          .filter(
+            (destination) =>
+              budget >= destination.minBudget || days >= destination.minDays,
+          )
+          .slice(0, 3);
+      }
 
-container.innerHTML = plans.map(plan => `
-  <article class="result-card">
-    <img src="../images/${plan.image}" alt="${plan.country}" class="card-img">
-    <h3>${plan.country}</h3>
-    <p><strong>Travel Type:</strong> ${plan.type}</p>
-    <p><strong>Suggested Duration:</strong> ${plan.duration}</p>
-    <p><strong>Estimated Budget:</strong> ${plan.budget}</p>
-    <p><strong>Preferred Stay:</strong> ${hotel}</p>
-    <p>${plan.description}</p>
-    <a href="plan-confirmation.html" class="plan-btn">Select This Plan</a>
-  </article>
-`).join("");
-</script>
+      plans = plans
+        .sort((a, b) => {
+          let scoreA = 0;
+          let scoreB = 0;
 
-<footer>
-  <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
-</footer>
+          if (a.types.includes(traveltype)) scoreA += 3;
+          if (b.types.includes(traveltype)) scoreB += 3;
 
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons/ionicons.js"></script>
+          if (a.stay.includes(hotel)) scoreA += 2;
+          if (b.stay.includes(hotel)) scoreB += 2;
 
-</body>
+          scoreA += Math.max(0, 3 - Math.abs(budget - a.minBudget) / 3000);
+          scoreB += Math.max(0, 3 - Math.abs(budget - b.minBudget) / 3000);
+
+          return scoreB - scoreA;
+        })
+        .slice(0, 4);
+      const container = document.getElementById("recommendations");
+
+      container.innerHTML = plans
+        .map(
+          (plan, index) => `
+      <article class="result-card">
+        <img src="../images/${plan.image}" alt="${plan.country}" class="card-img">
+        <h3>${plan.country}</h3>
+<p><strong>Travel Type:</strong> ${plan.types.join(", ")}</p>        
+<p><strong>Estimated Budget:</strong> Starting from ${plan.minBudget} SAR</p>        <p><strong>Preferred Stay:</strong> ${hotel}</p>
+        <p>${plan.description}</p>
+        <p><strong>Activities:</strong> ${plan.activities.join(", ")}</p>
+
+        <a href="#" class="plan-btn select-plan-btn" data-index="${index}">
+          Select This Plan
+        </a>
+      </article>
+    `,
+        )
+        .join("");
+
+      document.querySelectorAll(".select-plan-btn").forEach((button) => {
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          const selectedIndex = this.dataset.index;
+          const selectedPlan = {
+            ...plans[selectedIndex],
+            userBudget: budget,
+            userDays: days,
+            userTravelType: traveltype,
+            userHotel: hotel,
+          };
+          const savedPlans =
+            JSON.parse(localStorage.getItem("selectedPlans")) || [];
+
+          savedPlans.unshift(selectedPlan);
+
+          localStorage.setItem("selectedPlans", JSON.stringify(savedPlans));
+
+          window.location.href = "plan-confirmation.html";
+        });
+      });
+    </script>
+
+    <footer>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+    </footer>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script nomodule src="https://unpkg.com/ionicons/ionicons.js"></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
 </html>
