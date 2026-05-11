@@ -1,86 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plan Confirmation - Dream Travel Planner</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
     <header class="site-header">
-        <div class="header-top">
-            <a href="../index.html" class="brand">
-                <img src="../images/logo.png" alt="Dream Travel Planner Logo" class="site-logo">
-                <h1>Dream Travel Planner</h1>
-            </a>
-        </div>
-        <p>Plan Confirmation</p>
+      <div class="header-top">
+        <a href="../index.html" class="brand">
+          <img
+            src="../images/logo.png"
+            alt="Dream Travel Planner Logo"
+            class="site-logo"
+          />
+          <h1>Dream Travel Planner</h1>
+        </a>
+      </div>
+      <div class="profile-icon-container">
+        <a href="profile.html" class="profile-icon-link">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile"
+            class="profile-icon"
+          />
+        </a>
+      </div>
+      <p>Plan Confirmation</p>
     </header>
 
     <nav class="navigation">
-        <ul>
-            <li class="list">
-                <a href="../index.html">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="text">Home</span>
-                </a>
-            </li>
+      <ul>
+        <li class="list">
+          <a href="../index.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="about-us.html">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="text">About</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="about-us.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="text">About</span>
+          </a>
+        </li>
 
-            <li class="list">
-                <a href="contact-us.html">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <span class="text">Contact</span>
-                </a>
-            </li>
+        <li class="list">
+          <a href="contact-us.html">
+            <span class="icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+            <span class="text">Contact</span>
+          </a>
+        </li>
 
-            <li class="list active">
-                <a href="trip-request.html">
-                    <span class="icon">
-                        <ion-icon name="airplane-outline"></ion-icon>
-                    </span>
-                    <span class="text">Plan Trip</span>
-                </a>
-            </li>
+        <li class="list active">
+          <a href="trip-request.html">
+            <span class="icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </span>
+            <span class="text">Plan Trip</span>
+          </a>
+        </li>
 
-            <div class="indicator"></div>
-        </ul>
+        <div class="indicator"></div>
+      </ul>
     </nav>
 
     <main>
-        <section class="confirmation-section">
-            <h2>Plan Selected Successfully</h2>
-            <p class="confirmation-text">
-                Thank you for choosing one of our recommended travel plans.
-                Your selection has been received successfully.
-            </p>
+      <section class="confirmation-section">
+        <h2>Plan Selected Successfully</h2>
+        <p class="confirmation-text">
+          Thank you for choosing one of our recommended travel plans. Your
+          selection has been received successfully.
+        </p>
+        <div class="confirmation-buttons">
+          <a href="profile.html" class="plan-btn"> My Plans </a>
 
-            <div class="confirmation-buttons">
-                <a href="trip-request.html" class="plan-btn">Plan Another Trip</a>
-                <a href="../index.html" class="plan-btn">Back to Home</a>
-            </div>
-        </section>
+          <a href="trip-request.html" class="plan-btn">Plan Another Trip</a>
+          <a href="../index.html" class="plan-btn">Back to Home</a>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
+      <p>&copy; 2026 Dream Travel Planner. All rights reserved.</p>
     </footer>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../js/dark-mode.js"></script>
+    <script src="../js/profile-icon.js"></script>
+  </body>
 </html>
