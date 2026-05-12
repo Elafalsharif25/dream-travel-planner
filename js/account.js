@@ -139,8 +139,9 @@ async function loadProfile(userId) {
     const favoriteType = document.getElementById("favoriteType");
 
     if (totalTrips) {
-      totalTrips.textContent = trips.length;
-    }
+  const savedPlans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
+  totalTrips.textContent = savedPlans.length;
+}
 
     if (favoriteHotel) {
       favoriteHotel.textContent =
@@ -300,9 +301,19 @@ function renderSelectedPlans() {
 
 if (editPlansBtn) {
   editPlansBtn.addEventListener("click", () => {
+
+    const savedPlans =
+      JSON.parse(localStorage.getItem("selectedPlans")) || [];
+
+    if (savedPlans.length === 0) {
+      alert("No plans available to edit.");
+      return;
+    }
+
     editMode = !editMode;
 
-    editPlansBtn.textContent = editMode ? "Done Editing" : "Edit Plans";
+    editPlansBtn.textContent =
+      editMode ? "Done Editing" : "Edit Plans";
 
     renderSelectedPlans();
   });
