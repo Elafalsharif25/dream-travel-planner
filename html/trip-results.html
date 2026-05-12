@@ -1,16 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Trip Results - Dream Travel Planner</title>
-    <link rel="stylesheet" href="../css/style.css" />
+
+    <link rel="stylesheet" href="../css/style.css">
+
     <script>
       if (localStorage.getItem("darkMode") === "enabled") {
         document.documentElement.classList.add("dark-mode");
       }
     </script>
   </head>
+
   <body>
     <header class="site-header">
       <div class="header-top">
@@ -19,57 +23,75 @@
             src="../images/logo.png"
             alt="Dream Travel Planner Logo"
             class="site-logo"
-          />
+          >
+
           <h1>Dream Travel Planner</h1>
         </a>
       </div>
+
       <div class="profile-icon-container">
         <a href="profile.html" class="profile-icon-link">
           <img
             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             alt="Profile"
             class="profile-icon"
-          />
+          >
         </a>
       </div>
+
       <p>Your Recommended Travel Plans</p>
     </header>
 
     <nav class="navigation">
       <ul>
         <li class="list">
-          <a href="../index.html"
-            ><span class="icon"><ion-icon name="home-outline"></ion-icon></span
-            ><span class="text">Home</span></a
-          >
+          <a href="../index.html">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+
+            <span class="text">Home</span>
+          </a>
         </li>
+
         <li class="list">
-          <a href="about-us.html"
-            ><span class="icon"
-              ><ion-icon name="people-outline"></ion-icon></span
-            ><span class="text">About</span></a
-          >
+          <a href="about-us.html">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+
+            <span class="text">About</span>
+          </a>
         </li>
+
         <li class="list">
-          <a href="contact-us.html"
-            ><span class="icon"><ion-icon name="call-outline"></ion-icon></span
-            ><span class="text">Contact</span></a
-          >
+          <a href="contact-us.html">
+            <span class="icon">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+
+            <span class="text">Contact</span>
+          </a>
         </li>
+
         <li class="list active">
-          <a href="trip-request.html"
-            ><span class="icon"
-              ><ion-icon name="airplane-outline"></ion-icon></span
-            ><span class="text">Plan Trip</span></a
-          >
+          <a href="trip-request.html">
+            <span class="icon">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </span>
+
+            <span class="text">Plan Trip</span>
+          </a>
         </li>
-        <div class="indicator"></div>
+
+        <li class="indicator"></li>
       </ul>
     </nav>
 
     <main>
       <section class="results-section">
         <h2>Recommended Destinations</h2>
+
         <p class="results-text" id="summaryText"></p>
 
         <div class="results-grid" id="recommendations"></div>
@@ -204,7 +226,8 @@
         plans = destinations
           .filter(
             (destination) =>
-              budget >= destination.minBudget || days >= destination.minDays,
+              budget >= destination.minBudget ||
+              days >= destination.minDays
           )
           .slice(0, 3);
       }
@@ -221,29 +244,60 @@
           if (b.stay.includes(hotel)) scoreB += 2;
 
           scoreA += Math.max(0, 3 - Math.abs(budget - a.minBudget) / 3000);
+
           scoreB += Math.max(0, 3 - Math.abs(budget - b.minBudget) / 3000);
 
           return scoreB - scoreA;
         })
         .slice(0, 4);
+
       const container = document.getElementById("recommendations");
 
       container.innerHTML = plans
         .map(
           (plan, index) => `
-      <article class="result-card">
-        <img src="../images/${plan.image}" alt="${plan.country}" class="card-img">
-        <h3>${plan.country}</h3>
-<p><strong>Travel Type:</strong> ${plan.types.join(", ")}</p>        
-<p><strong>Estimated Budget:</strong> Starting from ${plan.minBudget} SAR</p>        <p><strong>Preferred Stay:</strong> ${hotel}</p>
-        <p>${plan.description}</p>
-        <p><strong>Activities:</strong> ${plan.activities.join(", ")}</p>
+            <article class="result-card">
 
-        <a href="#" class="plan-btn select-plan-btn" data-index="${index}">
-          Select This Plan
-        </a>
-      </article>
-    `,
+              <img
+                src="../images/${plan.image}"
+                alt="${plan.country}"
+                class="card-img"
+              >
+
+              <h3>${plan.country}</h3>
+
+              <p>
+                <strong>Travel Type:</strong>
+                ${plan.types.join(", ")}
+              </p>
+
+              <p>
+                <strong>Estimated Budget:</strong>
+                Starting from ${plan.minBudget} SAR
+              </p>
+
+              <p>
+                <strong>Preferred Stay:</strong>
+                ${hotel}
+              </p>
+
+              <p>${plan.description}</p>
+
+              <p>
+                <strong>Activities:</strong>
+                ${plan.activities.join(", ")}
+              </p>
+
+              <a
+                href="#"
+                class="plan-btn select-plan-btn"
+                data-index="${index}"
+              >
+                Select This Plan
+              </a>
+
+            </article>
+          `
         )
         .join("");
 
@@ -252,6 +306,7 @@
           event.preventDefault();
 
           const selectedIndex = this.dataset.index;
+
           const selectedPlan = {
             ...plans[selectedIndex],
             userBudget: budget,
@@ -259,12 +314,16 @@
             userTravelType: traveltype,
             userHotel: hotel,
           };
+
           const savedPlans =
             JSON.parse(localStorage.getItem("selectedPlans")) || [];
 
           savedPlans.unshift(selectedPlan);
 
-          localStorage.setItem("selectedPlans", JSON.stringify(savedPlans));
+          localStorage.setItem(
+            "selectedPlans",
+            JSON.stringify(savedPlans)
+          );
 
           window.location.href = "plan-confirmation.html";
         });
@@ -279,8 +338,14 @@
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
-    <script nomodule src="https://unpkg.com/ionicons/ionicons.js"></script>
+
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons/ionicons.js"
+    ></script>
+
     <script src="../js/dark-mode.js"></script>
+
     <script src="../js/profile-icon.js"></script>
   </body>
 </html>
