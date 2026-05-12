@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Dream Travel Planner</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css">
+
     <script>
       if (localStorage.getItem("darkMode") === "enabled") {
         document.documentElement.classList.add("dark-mode");
       }
     </script>
   </head>
+
   <body>
     <header class="site-header">
       <div class="header-top">
@@ -19,19 +21,21 @@
             src="../images/logo.png"
             alt="Dream Travel Planner Logo"
             class="site-logo"
-          />
+          >
           <h1>Dream Travel Planner</h1>
         </a>
       </div>
+
       <div class="profile-icon-container">
         <a href="profile.html" class="profile-icon-link">
           <img
             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
             alt="Profile"
             class="profile-icon"
-          />
+          >
         </a>
       </div>
+
       <p>Contact Our Team</p>
     </header>
 
@@ -73,22 +77,24 @@
           </a>
         </li>
 
-        <div class="indicator"></div>
+        <li class="indicator"></li>
       </ul>
     </nav>
 
     <main>
       <section class="contact-section">
         <h2>Contact Us</h2>
+
         <p class="contact-text">
-          If you have any questions, suggestions, or travel inquiries, please
-          fill out the form below. We would be happy to hear from you.
+          If you have any questions, suggestions, or travel inquiries,
+          please fill out the form below. We would be happy to hear from you.
         </p>
 
         <form class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-group">
               <label for="first-name">First Name</label>
+
               <input
                 type="text"
                 id="first-name"
@@ -96,11 +102,12 @@
                 placeholder="Enter your first name"
                 required
                 oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
-              />
+              >
             </div>
 
             <div class="form-group">
               <label for="last-name">Last Name</label>
+
               <input
                 type="text"
                 id="last-name"
@@ -108,13 +115,14 @@
                 placeholder="Enter your last name"
                 required
                 oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"
-              />
+              >
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="gender">Gender</label>
+
               <select id="gender" name="gender" required>
                 <option value="">Select gender</option>
                 <option value="male">Male</option>
@@ -124,6 +132,7 @@
 
             <div class="form-group">
               <label for="mobile">Mobile Number</label>
+
               <input
                 type="tel"
                 id="mobile"
@@ -134,31 +143,39 @@
                 maxlength="10"
                 title="Mobile number must start with 05 and contain exactly 10 digits"
                 oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              />
+              >
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="dob">Date of Birth</label>
-              <input type="date" id="dob" name="dob" required />
+
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                required
+              >
             </div>
 
             <div class="form-group">
               <label for="email">Email Address</label>
+
               <input
                 type="email"
                 id="email"
                 name="email"
                 placeholder="example@email.com"
                 required
-              />
+              >
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group full-width">
               <label for="language">Language of Communication</label>
+
               <select id="language" name="language" required>
                 <option value="">Select a language</option>
                 <option value="arabic">Arabic</option>
@@ -170,6 +187,7 @@
           <div class="form-row">
             <div class="form-group full-width">
               <label for="message">Message</label>
+
               <textarea
                 id="message"
                 name="message"
@@ -196,20 +214,25 @@
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
+
     <script
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
     <script src="../js/contact-validation.js"></script>
 
     <div id="successModal" class="success-modal">
       <div class="success-box">
         <div class="success-icon">✓</div>
+
         <h2>Message Sent Successfully</h2>
+
         <p>
-          Thank you for contacting Dream Travel Planner. We will get back to you
-          soon.
+          Thank you for contacting Dream Travel Planner.
+          We will get back to you soon.
         </p>
+
         <button id="closeSuccessModal">OK</button>
       </div>
     </div>
@@ -255,8 +278,10 @@
           document.getElementById("successModal").style.display = "none";
         });
     </script>
+
     <script src="../js/dark-mode.js"></script>
     <script src="../js/profile-icon.js"></script>
+
     <script>
       const languageSelect = document.getElementById("language");
       const messageInput = document.getElementById("message");
@@ -267,10 +292,13 @@
         if (language === "arabic") {
           messageInput.value = messageInput.value.replace(
             /[^\u0600-\u06FF\s]/g,
-            "",
+            ""
           );
         } else if (language === "english") {
-          messageInput.value = messageInput.value.replace(/[^A-Za-z\s]/g, "");
+          messageInput.value = messageInput.value.replace(
+            /[^A-Za-z\s]/g,
+            ""
+          );
         } else {
           messageInput.value = "";
           alert("Please select a language first.");
