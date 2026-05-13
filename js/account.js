@@ -16,8 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
       const message = document.getElementById("accountMessage");
-      const namePattern = /^[A-Za-z\s]+$/;
+      const namePattern = /^[A-Za-z\s]{2,50}$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const mobilePattern = /^05[0-9]{8}$/;
+      const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
+      if (
+        !firstName ||
+        !lastName ||
+        !email ||
+        !mobile ||
+        !password ||
+        !confirmPassword
+      ) {
+        message.textContent = "Please fill in all fields.";
+        message.className = "form-message error-message";
+        return;
+      }
       if (!namePattern.test(firstName)) {
         message.textContent = "First name should contain letters only.";
         message.className = "form-message error-message";
@@ -26,6 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!namePattern.test(lastName)) {
         message.textContent = "Last name should contain letters only.";
+        message.className = "form-message error-message";
+        return;
+      }
+      if (!emailPattern.test(email)) {
+        message.textContent = "Please enter a valid email address.";
+        message.className = "form-message error-message";
+        return;
+      }
+
+      if (!mobilePattern.test(mobile)) {
+        message.textContent =
+          "Mobile number must start with 05 and contain 10 digits.";
+        message.className = "form-message error-message";
+        return;
+      }
+
+      if (!passwordPattern.test(password)) {
+        message.textContent =
+          "Password must be at least 6 characters and include letters and numbers.";
         message.className = "form-message error-message";
         return;
       }
@@ -76,7 +110,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("loginEmail").value.trim();
       const password = document.getElementById("loginPassword").value;
       const message = document.getElementById("loginMessage");
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+      if (!email || !password) {
+        message.textContent = "Please enter your email and password.";
+        message.className = "form-message error-message";
+        return;
+      }
+
+      if (!emailPattern.test(email)) {
+        message.textContent = "Please enter a valid email address.";
+        message.className = "form-message error-message";
+        return;
+      }
+
+      if (password.length < 6) {
+        message.textContent = "Password must be at least 6 characters.";
+        message.className = "form-message error-message";
+        return;
+      }
       try {
         const response = await fetch("/login", {
           method: "POST",
@@ -139,9 +191,10 @@ async function loadProfile(userId) {
     const favoriteType = document.getElementById("favoriteType");
 
     if (totalTrips) {
-  const savedPlans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
-  totalTrips.textContent = savedPlans.length;
-}
+      const savedPlans =
+        JSON.parse(localStorage.getItem("selectedPlans")) || [];
+      totalTrips.textContent = savedPlans.length;
+    }
 
     if (favoriteHotel) {
       favoriteHotel.textContent =
@@ -285,49 +338,23 @@ function renderSelectedPlans() {
     .join("");
 
   document.querySelectorAll(".delete-plan-btn").forEach((button) => {
-  button.addEventListener("click", async () => {
-    const index = Number(button.dataset.index);
-    const plans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
-    const plan = plans[index];
-    const userId = localStorage.getItem("userId");
+    button.addEventListener("click", () => {
+      const index = button.dataset.index;
 
-    if (!plan) return;
-
-    const confirmDelete = confirm("Are you sure you want to delete this plan?");
-    if (!confirmDelete) return;
-
-    try {
-      if (plan.id && userId) {
-        const response = await fetch(`/delete-trip/${plan.id}?userId=${userId}`, {
-          method: "DELETE",
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          alert(data.message || "Could not delete plan from database.");
-          return;
-        }
-      }
+      const plans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
 
       plans.splice(index, 1);
+
       localStorage.setItem("selectedPlans", JSON.stringify(plans));
 
       renderSelectedPlans();
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong while deleting the plan.");
-    }
+    });
   });
-});
-
 }
 
 if (editPlansBtn) {
   editPlansBtn.addEventListener("click", () => {
-
-    const savedPlans =
-      JSON.parse(localStorage.getItem("selectedPlans")) || [];
+    const savedPlans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
 
     if (savedPlans.length === 0) {
       alert("No plans available to edit.");
@@ -336,8 +363,7 @@ if (editPlansBtn) {
 
     editMode = !editMode;
 
-    editPlansBtn.textContent =
-      editMode ? "Done Editing" : "Edit Plans";
+    editPlansBtn.textContent = editMode ? "Done Editing" : "Edit Plans";
 
     renderSelectedPlans();
   });
