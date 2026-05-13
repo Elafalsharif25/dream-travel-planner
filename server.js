@@ -20,7 +20,7 @@ const db = mysql.createConnection({
   port: 8889,
 });
 
-db.connect((err) => {
+db.connect((err, result) => {
   if (err) {
     console.error("Database connection failed:", err);
   } else {
@@ -164,12 +164,13 @@ app.post("/submit-trip", (req, res) => {
   db.query(
     sql,
     [userId, fullname, budget, travelers, days, date, traveltype, hotel, notes],
-    (err) => {
+    (err, result) => {
       if (err) {
         console.error(err);
         res.status(500).send("Error saving trip request");
       } else {
         const query = new URLSearchParams({
+          tripId: result.insertId || "",
           budget: budget || "",
           travelers: travelers || "",
           days: days || "",
@@ -181,6 +182,30 @@ app.post("/submit-trip", (req, res) => {
       }
     },
   );
+});
+
+app.delete("/delete-trip/:id", (req, res) => {
+  const tripId = req.params.id;
+  const userId = req.query.userId;
+
+  if (!tripId || !userId) {
+    return res.status(400).json({ message: "Trip ID and user ID are required." });
+  }
+
+  const sql = "DELETE FROM trip_requests WHERE id = ? AND user_id = ?";
+
+  db.query(sql, [tripId, userId], (err, result) => {
+    if (err) {
+      console.error("Delete error:", err);
+      return res.status(500).json({ message: "Error deleting trip from database." });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Trip not found in database." });
+    }
+
+    res.status(200).json({ message: "Trip deleted from database successfully." });
+  });
 });
 
 app.listen(PORT, () => {

@@ -285,18 +285,42 @@ function renderSelectedPlans() {
     .join("");
 
   document.querySelectorAll(".delete-plan-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const index = button.dataset.index;
+  button.addEventListener("click", async () => {
+    const index = Number(button.dataset.index);
+    const plans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
+    const plan = plans[index];
+    const userId = localStorage.getItem("userId");
 
-      const plans = JSON.parse(localStorage.getItem("selectedPlans")) || [];
+    if (!plan) return;
+
+    const confirmDelete = confirm("Are you sure you want to delete this plan?");
+    if (!confirmDelete) return;
+
+    try {
+      if (plan.id && userId) {
+        const response = await fetch(`/delete-trip/${plan.id}?userId=${userId}`, {
+          method: "DELETE",
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message || "Could not delete plan from database.");
+          return;
+        }
+      }
 
       plans.splice(index, 1);
-
       localStorage.setItem("selectedPlans", JSON.stringify(plans));
 
       renderSelectedPlans();
-    });
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong while deleting the plan.");
+    }
   });
+});
+
 }
 
 if (editPlansBtn) {
